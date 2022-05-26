@@ -2,6 +2,7 @@
     const express = require('express');
     const app = express();
     const morgan = require('morgan');
+    const cors = require('cors');
     const CronJob = require('cron').CronJob;
     const addArticles = require('../src/scripts/addArticles.js');
 
@@ -12,6 +13,10 @@
     dotenv.config({ path: path.resolve(__dirname, '../.env')});
 
 // Other Configs:
+    app.use(cors({ 
+        methods: "GET,POST,PUT,DELETE",
+        credentials: true
+    }));
     app.use(morgan('dev'));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));

@@ -22,19 +22,28 @@ router.get('/', (req, res) => {
 
 router.get('/articles/', async (req, res) => {
     try{
-        // Pagination:
+        // Pagination and Order:
             const page = req.query.page;
             const limit = req.query.limit;
-
             const startIndex = (page - 1) * limit;
-            const endIndex = page * limit;
-
-        //let articles = await Article.find().lean();
-        let articles = await Article.find().limit(limit).skip(startIndex).lean();
-        res.status(200).json({
-            error: false,
-            articles
+            const order = req.query.order;
+        
+        Article.find().limit(limit).skip(startIndex).lean().sort({
+            publishedAt: order
+        })
+        .then((articles) => {
+            res.status(200).json({
+                error: false,
+                articles
+            });
+        })
+        .catch((err) => {
+            res.json({
+                error: true,
+                message: err.message
+            });
         });
+        
     }catch(err){
         res.json({
             error: true,

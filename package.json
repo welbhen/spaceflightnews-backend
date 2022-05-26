@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "fetch_data": "node src/scripts/addArticles.js"
+    "fetch_data": "node src/scripts/addArticles.js",
+    "delete_all_documents": "node src/scripts/delArticles.js"
   },
   "engines": {
     "node": "17.4.0",
@@ -16,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "cron": "^2.0.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
