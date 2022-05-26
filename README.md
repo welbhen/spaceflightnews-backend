@@ -8,6 +8,7 @@ This a REST API that stores data from [Spaceflight News API](https://api.spacefl
 - Express
 - Mongoose
 - Cron
+- REST
 ### Routes
 - '[GET]/': main route, returns a JSON with a friendly message.
 - '[GET]/articles/': returns a JSON with all articles stored in the DB.
